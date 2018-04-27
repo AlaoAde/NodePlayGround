@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title></title>
 </head>
+
+<script>
+
+    window.onload = () => {
+        let list = document.getElementById("list");
+        let evtSource = new EventSource("http://localhost:1403/events");
+
+        evtSource.onmessage = (e) => {
+            let newElement = document.createElement("li");
+            newElement.innerHTML = e.data;
+            list.appendChild(newElement);
+        }
+    }
+
+</script>
 <body>
-$END$
+
+<ul id="list"></ul>
+
 </body>
 </html>
